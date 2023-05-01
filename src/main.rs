@@ -78,6 +78,11 @@ fn main() {
     my_hash_map.insert(String::from("Rakesh_1"), 28);
     println!("Phone number of Rakesh_1 is {:?}", my_hash_map.get("Rakesh_1"));
     println!("Phone number of Random is {:?}", my_hash_map.get("Random"));
+
+    let long_string = String::from("Hello World Long!");
+    let short_string = String::from("Hello World");
+    let result_string = longest_string(&long_string, &short_string);
+    println!("Longest string is {}", result_string);
 }
 
 fn contact_to_string(c: &Contact) -> String {
@@ -112,5 +117,15 @@ fn any_option_to_string<T: IsString>(opt: &Option<T>) -> String {
         None => {
             "None".to_string()
         }
+    }
+}
+
+// Lifetimes - 'a is the lifetime annotation
+fn longest_string<'a>(s1: &'a String, s2: &'a String) -> &'a String {
+    if s2.len() < s1.len() {
+        s1
+    }
+    else {
+        s2
     }
 }
