@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 use rand::prelude::Rng;
 use rust_learn::doubling::double_number;
 
@@ -69,6 +71,13 @@ fn main() {
         *i = *i + 2; // * is used to de-reference the element
     }
     println!("First element of v1 is {:?}", v1.get(0));
+
+    // HashMaps
+    let mut my_hash_map: HashMap<String, i32> = HashMap::new();
+    my_hash_map.insert(String::from("Rakesh"), 27);
+    my_hash_map.insert(String::from("Rakesh_1"), 28);
+    println!("Phone number of Rakesh_1 is {:?}", my_hash_map.get("Rakesh_1"));
+    println!("Phone number of Random is {:?}", my_hash_map.get("Random"));
 }
 
 fn contact_to_string(c: &Contact) -> String {
