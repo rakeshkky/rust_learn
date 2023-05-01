@@ -61,6 +61,14 @@ fn main() {
     let v1_first = v1.pop(); // Now v1 contains only 1, 2, 3
     // {:?} syntax is used to format Option<T>
     println!("v1_first is {:?}", v1_first);
+
+    // Loop on vectors
+    // Add 2 to all elements of v1
+    // Should pass mutable reference
+    for i in &mut v1 {
+        *i = *i + 2; // * is used to de-reference the element
+    }
+    println!("First element of v1 is {:?}", v1.get(0));
 }
 
 fn contact_to_string(c: &Contact) -> String {
