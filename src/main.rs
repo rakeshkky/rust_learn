@@ -1,11 +1,16 @@
-fn main() {
-    let mut s1 = String::from("123");
-    s1.push_str("456");
-    print_length(&mut s1); // Ownership of s1 is borrowed by the print_length function through the reference.
-    println!("Final string is {}", s1);
+// Data Types
+struct User {
+    name: String,
+    email: String,
+    age: i32,
 }
 
-fn print_length(s: &mut String) -> () {
-    s.push_str("789");
-    println!("Size of string, {}, is {}", s, s.len());
+fn main() {
+    // constructing a User value
+    let my_user = User {
+        name: String::from("Rakesh"),
+        email: String::from("random@random.com"),
+        age: 27
+    };
+    println!("my_user name is {}, age is {} and email is {}", my_user.name, my_user.age, my_user.email);
 }
