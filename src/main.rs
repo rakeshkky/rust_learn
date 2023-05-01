@@ -4,6 +4,12 @@ enum Contact {
     PhoneNumber(String),
 }
 
+impl Contact {
+    fn to_string(&self) -> String {
+        contact_to_string(self) // Or we can use match
+    }
+}
+
 struct User {
     name: String,
     age: i32,
@@ -17,9 +23,11 @@ fn main() {
         age: 27,
         contact: Contact::Email(String::from("random@random.com")),
     };
-    let contact_string = contact_to_string(&my_user.contact);
+    // Using implementation to_string() on Contact
+    let contact_string = my_user.contact.to_string();
     println!("my_user name is {}, age is {} and a way of contact is {}", my_user.name, my_user.age, contact_string);
     my_user.contact = Contact::PhoneNumber(String::from("9632587410"));
+    // Using function contact_to_string();
     println!("Contact is {}", contact_to_string(&my_user.contact));
 }
 
