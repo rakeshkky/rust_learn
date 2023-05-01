@@ -1,3 +1,5 @@
+use rand::prelude::Rng;
+
 // Data Types
 enum Contact {
     Email(String),
@@ -42,6 +44,11 @@ fn main() {
     println!("Contact is {}", contact_to_string(&my_user.contact));
     my_user.age = Option::Some(27);
     println!("Age is {}", any_option_to_string(&my_user.age));
+
+    // Random numbers
+    let mut rng = rand::thread_rng();
+    let random_num: i32 = rng.gen_range(-101..100);
+    println!("Generated random number {}", random_num);
 }
 
 fn contact_to_string(c: &Contact) -> String {
