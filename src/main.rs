@@ -1,10 +1,33 @@
 // Data Types
+enum Contact {
+    Email(String),
+    PhoneNumber(String),
+}
 
-// A tuple struct
-struct User(String, String, i32);
+struct User {
+    name: String,
+    age: i32,
+    contact: Contact,
+}
 
 fn main() {
     // constructing a User value
-    let my_user = User(String::from("Rakesh"), String::from("random@random.com"), 27);
-    println!("my_user name is {}, age is {} and email is {}", my_user.0, my_user.2, my_user.1);
+    let my_user = User {
+        name: String::from("Rakesh"),
+        age: 27,
+        contact: Contact::Email(String::from("random@random.com")),
+    };
+    let contact_string = contact_to_string(my_user.contact);
+    println!("my_user name is {}, age is {} and a way of contact is {}", my_user.name, my_user.age, contact_string);
+}
+
+fn contact_to_string(c: Contact) -> String {
+    match c {
+        Contact::Email(email) => {
+            format!("email, {}", email)
+        },
+        Contact::PhoneNumber(phone_number) => {
+            format!("phone number, {}", phone_number)
+        }
+    }
 }
