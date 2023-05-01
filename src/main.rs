@@ -1,4 +1,5 @@
 use rand::prelude::Rng;
+use rust_learn::doubling::double_number;
 
 // Data Types
 enum Contact {
@@ -49,6 +50,11 @@ fn main() {
     let mut rng = rand::thread_rng();
     let random_num: i32 = rng.gen_range(-101..100);
     println!("Generated random number {}", random_num);
+
+    // Double number - using function from lib
+    let my_num = 5;
+    let doubled_num = double_number(my_num);
+    println!("my_num is {} and doubled_num is {}", my_num, doubled_num);
 }
 
 fn contact_to_string(c: &Contact) -> String {
