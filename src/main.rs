@@ -1,17 +1,10 @@
 // Data Types
-struct User {
-    name: String,
-    email: String,
-    age: i32,
-}
+
+// A tuple struct
+struct User(String, String, i32);
 
 fn main() {
     // constructing a User value
-    let mut my_user = User {
-        name: String::from("Rakesh"),
-        email: String::from("random@random.com"),
-        age: 27
-    };
-    my_user.name = "Rakesh Updated".to_string();
-    println!("my_user name is {}, age is {} and email is {}", my_user.name, my_user.age, my_user.email);
+    let my_user = User(String::from("Rakesh"), String::from("random@random.com"), 27);
+    println!("my_user name is {}, age is {} and email is {}", my_user.0, my_user.2, my_user.1);
 }
