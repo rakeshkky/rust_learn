@@ -55,6 +55,12 @@ fn main() {
     let my_num = 5;
     let doubled_num = double_number(my_num);
     println!("my_num is {} and doubled_num is {}", my_num, doubled_num);
+
+    // Vectors
+    let mut v1: Vec<i32> = vec![1, 2, 3, 4];
+    let v1_first = v1.pop(); // Now v1 contains only 1, 2, 3
+    // {:?} syntax is used to format Option<T>
+    println!("v1_first is {:?}", v1_first);
 }
 
 fn contact_to_string(c: &Contact) -> String {
