@@ -129,3 +129,10 @@ fn longest_string<'a>(s1: &'a String, s2: &'a String) -> &'a String {
         s2
     }
 }
+
+fn _create_greeting() -> impl Fn(&str) -> String {
+    let greet = "Hello";
+    // Omitting move below causes compile time error.
+    // 'move' enables moving out closure (lambda) with greet variable
+    move |name: &str| format!("{greet} {name}!")
+}
