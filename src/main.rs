@@ -35,6 +35,15 @@ struct User {
     contact: Contact,
 }
 
+// Custom macro, should be always defined before its usage.
+// Defining this macro after main (where is it being used) causes
+// out of scope error
+macro_rules! hello_world {
+    () => {
+        println!("Hello World using a macro");
+    }
+}
+
 fn main() {
     // constructing a User value
     let mut my_user = User {
@@ -87,6 +96,9 @@ fn main() {
     let short_string = String::from("Hello World");
     let result_string = longest_string(&long_string, &short_string);
     println!("Longest string is {}", result_string);
+
+    // Run a custom macro
+    hello_world!();
 }
 
 fn contact_to_string(c: &Contact) -> String {
