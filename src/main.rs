@@ -41,6 +41,11 @@ struct User {
 macro_rules! hello_world {
     () => {
         println!("Hello World using a macro");
+    };
+    // We cannot define (s: String) down below and use the macro
+    // Macros generate code, hence the expression (expr) type is specified.
+    ($s: expr) => {
+        println!("Hello {}", $s);
     }
 }
 
@@ -99,6 +104,7 @@ fn main() {
 
     // Run a custom macro
     hello_world!();
+    hello_world!("rakesh");
 }
 
 fn contact_to_string(c: &Contact) -> String {
