@@ -25,6 +25,10 @@ impl IsString for i32 {
     fn to_string_trait(&self) -> String { format!("{}", self) }
 }
 
+impl IsString for Contact {
+    fn to_string_trait(&self) -> String { self.to_string() }
+}
+
 struct User {
     name: String,
     age: Option<i32>,
@@ -135,4 +139,8 @@ fn _create_greeting() -> impl Fn(&str) -> String {
     // Omitting move below causes compile time error.
     // 'move' enables moving out closure (lambda) with greet variable
     move |name: &str| format!("{greet} {name}!")
+}
+
+fn _returns_type_implements_a_trait() -> Box<dyn IsString> {
+    Box::new(Contact::Email("random@random.com".to_string()))
 }
