@@ -162,3 +162,13 @@ fn _create_greeting() -> impl Fn(&str) -> String {
 fn _returns_type_implements_a_trait() -> Box<dyn IsString> {
     Box::new(Contact::Email("random@random.com".to_string()))
 }
+
+fn _question_mark_operator() -> Result<(), String> {
+    // The question mark operator used to unwrap results/options
+    // by propagating errors to the caller
+    let one = _validate_one()?;
+    let two = _validate_two(one)?;
+    Ok(two)
+}
+fn _validate_one() -> Result<(), String> {Ok(())}
+fn _validate_two(_: ()) -> Result<(), String> {Ok(())}
