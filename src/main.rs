@@ -171,4 +171,4 @@ fn _question_mark_operator() -> Result<(), String> {
     Ok(two)
 }
 fn _validate_one() -> Result<(), String> {Ok(())}
-fn _validate_two(_: ()) -> Result<(), String> {Ok(())}
+fn _validate_two(_: ()) -> Result<(), String> {Err("Error occurred!".into())}
