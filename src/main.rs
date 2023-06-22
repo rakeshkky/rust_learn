@@ -49,7 +49,8 @@ macro_rules! hello_world {
     }
 }
 
-fn main() {
+#[tokio::main]
+async fn main() {
     // constructing a User value
     let mut my_user = User {
         name: String::from("Rakesh"),
@@ -106,12 +107,8 @@ fn main() {
     hello_world!();
     hello_world!("rakesh");
 
-    // Run Async
-    // Inititalize a runtime using tokio
-    let rt = tokio::runtime::Runtime::new().unwrap();
-    // Get a future from async function
     let async_future = async_fn("Rakesh");
-    let _async_result = rt.block_on(async_future);
+    async_future.await;
 }
 
 fn contact_to_string(c: &Contact) -> String {
