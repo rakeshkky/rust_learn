@@ -105,6 +105,13 @@ fn main() {
     // Run a custom macro
     hello_world!();
     hello_world!("rakesh");
+
+    // Run Async
+    // Inititalize a runtime using tokio
+    let rt = tokio::runtime::Runtime::new().unwrap();
+    // Get a future from async function
+    let async_future = async_fn("Rakesh");
+    let _async_result = rt.block_on(async_future);
 }
 
 fn contact_to_string(c: &Contact) -> String {
@@ -172,3 +179,7 @@ fn _question_mark_operator() -> Result<(), String> {
 }
 fn _validate_one() -> Result<(), String> {Ok(())}
 fn _validate_two(_: ()) -> Result<(), String> {Err("Error occurred!".into())}
+
+async fn async_fn(t: &str) {
+    println!("Hello from Async: {t}");
+}
